@@ -1,0 +1,12 @@
+le code respecte les principes SOLID et le pattern Decorator.
+
+Aucune violation majeure.
+Il suit :
+
+l’extensibilité
+
+la composition plutôt que l’héritage
+
+le découplage
+
+ Donc oui, c’est un bon design logiciel
