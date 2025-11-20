@@ -1,6 +1,7 @@
 package com.polytech.tp;
 
 public class Cours implements ICours {
+
     private String matiere;
     private String enseignant;
     private String salle;
@@ -10,17 +11,16 @@ public class Cours implements ICours {
     private String niveau;
     private boolean necessiteProjecteur;
 
-    
-    public Cours(String matiere, String enseignant, String salle, String date, 
-                 String heureDebut, boolean estOptionnel, String niveau, boolean necessiteProjecteur) {
-        this.matiere = matiere;
-        this.enseignant = enseignant;
-        this.salle = salle;
-        this.date = date;
-        this.heureDebut = heureDebut;
-        this.estOptionnel = estOptionnel;
-        this.niveau = niveau;
-        this.necessiteProjecteur = necessiteProjecteur;
+    // 🔒 Constructeur privé : seule la classe Builder peut créer un Cours
+    private Cours(CoursBuilder builder) {
+        this.matiere = builder.matiere;
+        this.enseignant = builder.enseignant;
+        this.salle = builder.salle;
+        this.date = builder.date;
+        this.heureDebut = builder.heureDebut;
+        this.estOptionnel = builder.estOptionnel;
+        this.niveau = builder.niveau;
+        this.necessiteProjecteur = builder.necessiteProjecteur;
     }
 
     @Override
@@ -30,10 +30,14 @@ public class Cours implements ICours {
 
     @Override
     public double getDuree() {
-        return 1.5; 
+        return 1.5;
     }
-    
-    
+
     public String getMatiere() { return matiere; }
     public String getEnseignant() { return enseignant; }
+
+    // Permet d'accéder au builder via Cours.builder()
+    public static CoursBuilder builder() {
+        return new CoursBuilder();
+    }
 }
